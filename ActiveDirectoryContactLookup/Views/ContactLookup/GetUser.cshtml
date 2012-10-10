@@ -1,0 +1,103 @@
+﻿@model ActiveDirectoryContactLookup.Models.ContactResult
+
+@{
+    Style.Require("ContactLookup");
+
+    Layout.Title = T("Active Directory Contact Entry").ToString();
+}
+
+<div class="single-contact-page">
+    <h1>Contact - @Model.DisplayName</h1>
+
+    <h2>Organisation</h2>
+    <div class="data">
+        <div class="field">Job Role:</div>
+        <div class="value">@Model.JobRole</div>
+    </div>
+
+    <div class="data">
+        <div class="field">Company:</div>
+        <div class="value">@Model.Company</div>
+    </div>
+
+    @if (Model.Manager != null)
+    {
+        <div class="data">
+            <div class="field">Reports to:</div>
+            <div class="value">@Html.RouteLink(Model.Manager.FirstName + " " + Model.Manager.LastName, "AdContactLookupGetUser", new { activeDirectoryDistinguishedName=Model.Manager.DistinguishedName })</div>
+        </div>
+    }
+    @if (Model.Manages != null)
+    {
+        <div class="data">
+            <div class="list-field">Manages:</div>
+            <ul class="manages-list">
+                @foreach (var user in Model.Manages)
+                {
+                    <li>
+                        @Html.RouteLink(user.FirstName + " " + user.LastName, "AdContactLookupGetUser", new { activeDirectoryDistinguishedName=user.DistinguishedName })
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+
+    <h2>General</h2>
+
+    <div class="data">
+        <div class="field">First Name:</div>
+        <div class="value">@Model.FirstName</div>
+    </div>
+
+    <div class="data">
+        <div class="field">Last Name:</div>
+        <div class="value">@Model.LastName</div>
+    </div>
+
+    <div class="data">
+        <div class="field">Display Name:</div>
+        <div class="value">@Model.DisplayName</div>
+    </div>
+
+    <div class="data">
+        <div class="field">Office:</div>
+        <div class="value">@Model.Office</div>
+    </div>
+
+    <div class="data">
+        <div class="field">Email:</div>
+        <div class="value">@Model.Email</div>
+    </div>
+
+    <div class="data">
+        <div class="field">Telephone:</div>
+        <div class="value">@Model.Telephone</div>
+    </div>
+
+    <h2>Telephones</h2>
+
+    <div class="data">
+        <div class="field">Home:</div>
+        <div class="value">@Model.HomePhoneNumber</div>
+    </div>
+
+    <div class="data">
+        <div class="field">Pager:</div>
+        <div class="value">@Model.Pager</div>
+    </div>
+
+    <div class="data">
+        <div class="field">Mobile:</div>
+        <div class="value">@Model.Mobile</div>
+    </div>
+
+    <div class="data">
+        <div class="field">Fax:</div>
+        <div class="value">@Model.Fax</div>
+    </div>
+
+    <div class="data">
+        <div class="field">IP Phone:</div>
+        <div class="value">@Model.IpPhoneNumber</div>
+    </div>
+</div>

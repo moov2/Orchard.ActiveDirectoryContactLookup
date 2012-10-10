@@ -1,0 +1,17 @@
+﻿@model ActiveDirectoryContactLookup.Models.AdSettingsPart
+
+<fieldset>
+    <legend>@T("Active Directory Settings")</legend>
+    <div>
+        @Html.LabelFor(m => m.DomainAddress, T("Address of the Active Directory LDAP server to use to lookup contacts")) 
+        @Html.TextBoxFor(m => m.DomainAddress, new { @class = "textMedium" })
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Username, T("Username for accessing active directory entries")) 
+        @Html.TextBoxFor(m => m.Username, new { @class = "textMedium" })
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Password, T("Password for accessing active directory entries")) 
+        @Html.PasswordFor(m => m.Password, new { @class = "textMedium" })
+    </div>
+</fieldset>

@@ -1,0 +1,11 @@
+﻿Name: Active Directory Contact Lookup
+AntiForgery: enabled
+Author: Moov2
+Website: http://moov2.com
+Version: 1.0
+OrchardVersion: 1.0
+Description: Filterable contact directory of active directory users for the admin dashboard and the website.
+Category: Users
+Features:
+    ActiveDirectoryContactLookup:
+        Description: Filterable contact directory of active directory users for the admin dashboard and the website.

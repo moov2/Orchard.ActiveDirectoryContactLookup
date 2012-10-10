@@ -1,0 +1,60 @@
+﻿@model ActiveDirectoryContactLookup.ViewModels.AdContactLookupIndexViewModel
+@{
+    Style.Require("ContactLookup");
+
+    Layout.Title = T("Lookup Active Directory Contacts").ToString();
+}
+
+<div class="contact-directory-page">
+    <h1>Contact Directory</h1>
+
+    <p>To search the contacts directory enter a search term in the text box below and click the search button.</p>
+
+    @using (Html.BeginFormAntiForgeryPost())
+    {
+        @Html.ValidationSummary()
+        <fieldset class="search-form">
+            @Html.TextBoxFor(m => m.Options.Search, new { @class = "search-term" })
+            <button class="search-button" type="submit" name="submit.ContactLookup" value="@T("Search")">@T("Search")</button>
+        </fieldset>
+    
+        if (Model.Contacts.Count > 0) {
+        <fieldset>
+            <table class="items">
+                <thead>
+                    <tr>
+                        <th scope="col">@T("First Name")</th>
+                        <th scope="col">@T("Last Name")</th>
+                        <th scope="col">@T("Username")</th>
+                        <th scope="col">@T("Telephone")</th>
+                    </tr>
+                </thead>
+                @foreach (var entry in Model.Contacts)
+                { 
+                    <tr>
+                        <td width="170px">
+                            @entry.FirstName
+                        </td>
+                        <td width="170px">
+                            @entry.LastName
+                        </td>
+                        <td width="170px">
+                            @Html.RouteLink(@entry.Username, "AdContactLookupGetUser", new { activeDirectoryDistinguishedName=entry.DistinguishedName })
+                        </td>
+                        <td width="170px">
+                            @entry.Telephone
+                        </td>
+                    </tr>
+                }
+            </table>
+
+            @Display(Model.Pager)
+        </fieldset>
+        }
+
+        if (Model.Contacts.Count == 0 && !String.IsNullOrEmpty(Model.Options.Search))
+        {
+            <div class="no-contacts">No contacts match your search.</div>
+        } 
+    }
+</div>

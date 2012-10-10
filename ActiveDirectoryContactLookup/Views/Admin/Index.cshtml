@@ -1,0 +1,45 @@
+﻿@model ActiveDirectoryContactLookup.ViewModels.AdContactLookupIndexViewModel
+@{
+    Layout.Title = T("Lookup Active Directory Contacts").ToString();
+}
+@using (Html.BeginFormAntiForgeryPost())
+{
+    @Html.ValidationSummary()
+    <fieldset class="contact-lookup">
+        <label for="@Html.NameOf(m => m.Options.Search)">Search Term:</label>
+        @Html.TextBoxFor(m => m.Options.Search, new { @class = "text" })
+        <button type="submit" name="submit.ContactLookup" value="@T("Search")">@T("Search")</button>
+    </fieldset>
+    
+    <fieldset>
+        <table class="items">
+            <thead>
+                <tr>
+                    <th scope="col">@T("First Name")</th>
+                    <th scope="col">@T("Last Name")</th>
+                    <th scope="col">@T("Username")</th>
+                    <th scope="col">@T("Telephone")</th>
+                </tr>
+            </thead>
+            @foreach (var entry in Model.Contacts)
+            { 
+                <tr>
+                    <td>
+                        @entry.FirstName
+                    </td>
+                    <td>
+                        @entry.LastName
+                    </td>
+                    <td>
+                        @entry.Username
+                    </td>
+                    <td>
+                        @entry.Telephone
+                    </td>
+                </tr>
+            }
+        </table>
+
+        @Display(Model.Pager)
+    </fieldset>
+}

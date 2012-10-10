@@ -1,0 +1,12 @@
+﻿
+@{
+    Style.Require("ContactLookup");
+}
+
+
+@using(Html.BeginForm("index", "contactlookup", new { area = "AdContactLookup" }, FormMethod.Get, new { @class = "search-form" })) { 
+    <fieldset>
+        @Html.TextBox("Options.Search", "")
+        <button type="submit">@T("Search")</button>
+    </fieldset>
+}
