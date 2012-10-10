@@ -20,6 +20,7 @@ Not available on the Orchard Gallery just yet, available for manual install usin
 
 * Ability to define connection settings for Active Directory.
 * Ability to filter contacts inside the active directory based on their first name, surname and username. This is available from inside the Admin dashboard and on the website.
+* Once contacts have been filtered, on the website a user is able to drill down into a contact to view more details.
 * Includes a widget that can initiate a search.
 
 ## Roadmap
