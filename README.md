@@ -1,6 +1,6 @@
 # Active Directory Contact Lookup for Orchard
 
-[Orchard](http://www.orchardproject.net/) is a community driven content management system that allows users to rapidly create websites for the .NET platform. This module allows a user to search by first name & surname the contacts inside active directory.
+[Orchard](http://www.orchardproject.net/) is a community driven content management system that allows users to rapidly create websites for the .NET platform. This module allows a user to search by first name, surname & username the contacts inside active directory.
 
 ## Status
 
