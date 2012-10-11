@@ -16,6 +16,9 @@ namespace ActiveDirectoryContactLookup.Models
         public string DomainAddress
         {
             get {
+                if (String.IsNullOrEmpty(Record.DomainAddress))
+                    return String.Empty;
+
                 return (Record.DomainAddress.StartsWith("LDAP://")) ? Record.DomainAddress : "LDAP://" + Record.DomainAddress;
             }
             set { Record.DomainAddress = value; }
